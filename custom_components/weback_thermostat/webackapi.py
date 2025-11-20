@@ -224,6 +224,17 @@ class WebackApi:
         """
         return await self.make_api_call('user_thing_info_get', sub_type=sub_type, thing_name=thing_name)
 
+    async def set_thing_status(self, sub_type, thing_name, parameters):
+        """
+        Set status of the thing
+        """
+        return await self.make_api_call(
+            'thing_control',
+            sub_type=sub_type,
+            thing_name=thing_name,
+            parameters=parameters
+        )
+
     async def make_api_call(self, opt, **fields):
         # re-login if the token is expired.
         await self.login()
